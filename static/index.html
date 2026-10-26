@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MNIST Studio · Reconhecimento de dígitos</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<header><a class="brand" href="/" aria-label="MNIST Studio início"><span class="logo">m.</span> MNIST <strong>studio</strong></a><a class="docs" href="/docs">Explorar API ↗</a></header>
+<main>
+<div class="eyebrow"><span></span> SEU TRAÇO, UMA PREVISÃO</div>
+<h1>Qual é o <em>seu número?</em></h1>
+<p class="intro">Desenhe um dígito e veja sua rede neural em ação.<br>Um pequeno experimento de inteligência artificial, nas suas mãos.</p>
+<div class="workspace">
+<section class="input-card" aria-label="Entrada do dígito">
+<div class="tabs" role="tablist" aria-label="Escolha a entrada"><button id="draw-tab" role="tab" aria-selected="true" aria-controls="draw-panel">✎ Desenhar</button><button id="upload-tab" role="tab" aria-selected="false" aria-controls="upload-panel" tabindex="-1">↥ Enviar imagem</button></div>
+<div id="draw-panel" role="tabpanel" aria-labelledby="draw-tab">
+<div class="canvas-wrap"><canvas id="canvas" width="280" height="280" aria-label="Desenhe um dígito de zero a nove com o mouse ou toque"></canvas><span id="hint">Desenhe aqui</span><span class="canvas-label">0 — 9</span></div>
+<div class="tools"><span>Use o mouse ou o dedo</span><button id="clear" class="text-button">↺ Limpar</button></div>
+</div>
+<div id="upload-panel" role="tabpanel" aria-labelledby="upload-tab" hidden>
+<label id="dropzone" class="dropzone" for="file"><span class="upload-icon">↥</span><strong>Solte sua imagem aqui</strong><span>ou clique para escolher um arquivo</span><small>PNG, JPG ou WEBP · até 5 MB</small><input id="file" type="file" accept="image/png,image/jpeg,image/webp"></label>
+<div id="preview-wrap" hidden><img id="preview" alt="Prévia da imagem selecionada"><p id="filename"></p></div>
+<label class="invert"><input id="invert" type="checkbox"> Minha imagem tem fundo claro <span>(inverter cores)</span></label>
+</div>
+<button id="predict" class="primary" disabled>Reconhecer dígito <span>→</span></button>
+<p id="status" class="status" role="status" aria-live="polite">Faça um traço para começar.</p>
+</section>
+<section class="result-card" aria-labelledby="result-title">
+<div class="result-header"><h2 id="result-title">Resultado da análise</h2><span class="badge">CNN · MNIST</span></div>
+<div id="result-empty" class="empty"><div class="ghost-digit">?</div><h3>O próximo número é seu.</h3><p>Seu resultado aparece aqui<br>assim que você reconhecer um dígito.</p></div>
+<div id="result" hidden><span class="result-label">NÚMERO PREVISTO</span><div id="digit" class="digit"></div><div class="confidence-row"><span>Confiança do modelo</span><strong id="confidence"></strong></div><div class="meter"><div id="meter-fill"></div></div><p class="confidence-note">A confiança indica a força da previsão, mas não garante que ela esteja correta.</p></div>
+<div class="tip"><span>✦</span><div><strong>Um traço faz a diferença</strong><p>Desenhe um único número, grande e centralizado. Para uploads, prefira um dígito claro em fundo escuro.</p></div></div>
+</section>
+</div>
+<div class="steps"><div><span>01</span><p><strong>Crie seu dígito</strong>Desenhe ou envie uma imagem.</p></div><div><span>02</span><p><strong>A rede interpreta</strong>Sua imagem é ajustada para 28 × 28.</p></div><div><span>03</span><p><strong>Descubra a previsão</strong>Veja o número e a confiança.</p></div></div>
+</main><footer><span>MNIST Studio</span><span>Feito de pixels. Interpretado por uma CNN.</span></footer>
+</body></html>
